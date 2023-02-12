@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+        <style>
+            
+            body{
+
+                background-color: black;
+                font-family: Orbitron;
+                font-style: bold;
+            }
+            #showtime{
+                
+                position:relative;
+                padding: 50px;
+                font-size: 50px;
+                top:50px;
+                text-align: center;
+                color:aqua;
+            }
+            #showdate{
+                position:relative;
+                padding: 50px;
+                font-size: 50px;
+                text-align: center;
+                color:aqua;
+            }
+        
+        </style>
+
+    </head>
+    <body>
+        <div id="showtime" onload="time()"> </div>
+        <div id="showdate" onload="time()"></div>
+     
+       
+    </body>
+    <script>
+        function time(){
+            let d = new Date();
+            let dd = d.getDate();
+            let mon = d.getMonth()+1;
+            let year = d.getFullYear();
+            let day = d.getDay();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            let s = d.getSeconds();
+            let mm = d.getMilliseconds();
+            console.log(h);
+
+            if(h > 12){
+                h=h-12;
+                let date = dd+" / "+mon+" / "+year ;
+                let hh = h+" : "+m+" : "+s+" : "+mm+" : PM";
+                document.getElementById("showtime").innerHTML = hh;
+                document.getElementById("showdate").innerHTML = date;
+              
+            }else{
+                let date = dd+" / "+mon+" / "+year ;
+                let hh = h+" : "+m+" : "+s+" : "+mm+" : AM";
+                document.getElementById("showtime").innerHTML = hh;
+                document.getElementById("showdate").innerHTML = date;
+
+            }
+            setTimeout(time, 1000);
+        }
+        time();
+    </script>
+</html>
